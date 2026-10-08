@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FocusGarden Pro – grow a plant for every focus session</title>
+  <meta name="description" content="Focus timer, tasks, streaks and a garden that grows as you study.">
+  <!-- Optional fonts: the page still works offline using system fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top">🌱 FocusGarden <small>Pro</small></a>
+    <div class="tools">
+      <button id="themeBtn" class="icon-btn" aria-label="Switch to dark mode">🌙</button>
+      <button id="menuBtn" class="icon-btn menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Open menu">☰</button>
+    </div>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="#timer">Timer</a><a href="#tasks">Tasks</a><a href="#garden">Garden</a><a href="#stats">Stats</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <h1>Grow your focus.<br>Watch your garden bloom.</h1>
+      <p id="quote" class="quote"></p>
+      <button id="quoteBtn" class="btn ghost small">New quote</button>
+      <div class="goal">
+        <div class="goal-top"><span>Daily goal</span><span id="goalText">0 / 4 sessions</span></div>
+        <div class="meter" role="progressbar" aria-label="Daily goal progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="goalBar"></div></div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <article id="timer" class="card">
+        <h2>Focus Timer</h2>
+        <div class="modes" role="group" aria-label="Timer mode">
+          <button class="chip active" data-mode="focus">Focus 25</button>
+          <button class="chip" data-mode="deep">Deep 50</button>
+          <button class="chip" data-mode="break">Break 5</button>
+          <button class="chip" data-mode="demo">Demo 10s</button>
+        </div>
+        <div class="ring">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle id="bar" class="bar" cx="60" cy="60" r="54"/></svg>
+          <p id="time" class="time" role="timer">25:00</p>
+        </div>
+        <div class="row">
+          <button id="startBtn" class="btn">Start</button>
+          <button id="resetBtn" class="btn ghost">Reset</button>
+        </div>
+        <p class="muted center">Focus = 🌱 plant · Deep = 🌳 tree</p>
+      </article>
+
+      <article id="tasks" class="card">
+        <h2>Today's Tasks</h2>
+        <form id="taskForm" class="row nowrap">
+          <label for="taskInput" class="sr">New task</label>
+          <input id="taskInput" type="text" placeholder="e.g. Revise DBMS notes" maxlength="60" required>
+          <label for="prio" class="sr">Priority</label>
+          <select id="prio"><option value="high">High</option><option value="med" selected>Medium</option><option value="low">Low</option></select>
+          <button class="btn" type="submit">Add</button>
+        </form>
+        <ul id="taskList" class="tasks"></ul>
+        <p id="taskEmpty" class="muted">No tasks yet. Add your first one!</p>
+        <div class="row between">
+          <span id="taskCount" class="muted"></span>
+          <button id="clearDone" class="btn ghost small">Clear completed</button>
+        </div>
+      </article>
+
+      <article id="garden" class="card wide">
+        <div class="row between"><h2>Your Garden</h2><button id="resetAll" class="btn ghost small">Reset progress</button></div>
+        <p id="gardenMsg" class="muted" aria-live="polite"></p>
+        <div id="plants" class="plants"></div>
+      </article>
+
+      <article id="stats" class="card wide">
+        <h2>Your Stats</h2>
+        <div id="tiles" class="tiles"></div>
+        <p id="nextRank" class="muted center"></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p>Built with HTML, CSS &amp; JavaScript · Project 1 · DecodeLabs</p></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
